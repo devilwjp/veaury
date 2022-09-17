@@ -12,7 +12,7 @@ module.exports = {
   configureWebpack: {
     resolve: {
       alias: {
-        ...(process.env.BUILD_TYPE === 'remote'? {}: {veaury: path.resolve(__dirname, '../src')}),
+        // ...(process.env.BUILD_TYPE === 'remote'? {}: {veaury: path.resolve(__dirname, '../src')}),
         src: path.resolve(__dirname, './src'),
         react_app: path.resolve(__dirname, './src/react_app'),
       }
