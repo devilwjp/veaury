@@ -20,14 +20,14 @@ const vueJsx = require('@vitejs/plugin-vue-jsx')
 //   }
 // }
 
-function veauryVitePlugins({type, vueJsxInclude, vueJsxExclude, vueOptions = {}, vueJsxOptions: initVueJsxOptions = {}, reactOptions = {}}) {
+function veauryVitePlugins({type, vueJsxInclude = null, vueJsxExclude = null, vueOptions = {}, vueJsxOptions: initVueJsxOptions = {}, reactOptions = {}}) {
 
   let vueJsxOptions = {...initVueJsxOptions}
   if (type === 'react') {
-    vueJsxOptions.include = [/vue&type=script&lang\.[tj]sx?$/, /vue&type=script&setup=true&lang\.[tj]sx?$/, /[/\\]vue_app[\\/$]+/]
+    vueJsxOptions.include = vueJsxInclude || [/vue&type=script&lang\.[tj]sx?$/, /vue&type=script&setup=true&lang\.[tj]sx?$/, /[/\\]vue_app[\\/$]+/]
   }
   if (type === 'vue') {
-    vueJsxOptions.exclude = [/[/\\]react_app[\\/$]+/]
+    vueJsxOptions.exclude = vueJsxExclude || [/[/\\]react_app[\\/$]+/]
   }
   if (type === 'custom') {
     if (vueJsxInclude) {
